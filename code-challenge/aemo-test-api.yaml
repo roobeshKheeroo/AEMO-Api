@@ -1,0 +1,80 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: aemo-test-api
+  labels:
+    app: aemo-test-api
+    service: aemo-test-api
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: aemo-test-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aemo-test-api
+  labels:
+    app: aemo-test-api
+spec:
+  selector:
+    matchLabels:
+      app: aemo-test-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: aemo-test-api
+      annotations:
+        sidecar.istio.io/proxyCPU: "0.005"
+        sidecar.istio.io/proxyMemory: "50Mi"
+    spec:
+      volumes:
+        - name: config-volume
+          secret:
+            secretName: aemo-test-api
+      containers:
+        - name: aemo-test-api
+          image: "aemo.azurecr.io/aemo/aemo.test.api"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/configuration
+          env:                    
+          resources:
+            limits:
+              cpu: "0.15" # sidecar + pod
+              memory: "1500Mi" # sidecar + pod
+            requests:
+              cpu: "0.06"
+              memory: "300Mi"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: aemo-test-api
+spec:
+  gateways:
+    - __gateway__
+  hosts:
+    - __host__
+  http:
+    - match:
+        - uri:
+            prefix: "/aemo-text-api/"
+        - uri:
+            prefix: "/aemo-text-api"
+      rewrite:
+        uri: "/"
+      route:
+        - destination:
+            host: aemo-test-api
+            port:
+              number: 80

@@ -1,0 +1,142 @@
+trigger:
+  - main
+
+stages:
+  - stage: Build
+    displayName: Build and Push Docker Image
+    jobs:
+      - job : Build
+        pool:
+          vmImage: ubuntu-latest
+
+        variables:
+          buildConfiguration: 'Release'
+
+        steps:
+          - task: UseDotNet@2
+            inputs:
+              version: '8.0.x'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet restore'
+            inputs:
+              command: 'restore'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'dotnet build $(BuildConfiguration)'
+            inputs:
+              command: 'build'
+              arguments: '--configuration $(BuildConfiguration)'
+               
+
+          - task: Docker@2
+            displayName: Login to ACR
+            inputs:
+              command: login
+              containerRegistry: AEMO_CR
+
+          - task: Docker@2
+            displayName: Build and Push
+            inputs:
+              command: buildAndPush
+              Dockerfile: Dockerfile
+              containerRegistry: AEMO_CR
+              repository:  'code-challenge/aemo.test.api'
+              buildContext: .
+              tags: |
+                staging
+
+          - task: PublishPipelineArtifact@1
+            displayName: Publish Artifact
+            inputs:
+              targetPath: 'aemo-test-api.yaml'
+              artifact: 'kubernetes'
+              publishLocation : 'pipeline'
+
+          - task: Docker@2
+            displayName: Logout of ACR
+            inputs:
+              command: logout
+              containerRegistry: AEMO_CR
+  - stage: Staging
+    displayName: Deploy to the staging environment
+    dependsOn: Build
+    jobs:
+    - deployment: Deploy
+      pool:
+        vmImage: ubuntu-latest
+      environment: Staging
+      variables:
+        - group: AEMO.Staging
+        - name: image-tag
+          value: staging
+        - name: display
+          value: aemo-test-api
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: none
+              - task: DownloadPipelineArtifact@2
+                inputs:
+                  artifact: 'kubernetes'
+                  path: $(Pipeline.Workspace)
+              - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+                displayName: Replace tokens in Kubernetes Config File
+                inputs:
+                  rootDirectory: $(Pipeline.Workspace)
+                  targetFiles: 'aemo-test-api.yaml'
+                  verbosity: detailed
+                  keepToken: true
+                  tokenPrefix: __
+                  tokenSuffix: __
+              - task: Kubernetes@1
+                displayName: Apply the manifest file and deploy image to k8
+                inputs:
+                  connectionType: 'Kubernetes Service Connection'
+                  kubernetesServiceEndpoint: 'aks-staging-001'
+                  namespace: 'default'
+                  command: 'apply'
+                  useConfigurationFile: true
+                  configuration: $(Pipeline.Workspace)/aemo-test-api.yaml
+                  secretType: 'dockerRegistry'
+                  containerRegistryType: 'Azure Container Registry'
+  - stage: Production
+    displayName: Deploy to the Production environment
+    dependsOn: Build
+    jobs:
+    - deployment: Deploy
+      pool:
+        vmImage: ubuntu-latest
+      environment: Production
+      variables:
+        - group: AEMO.Production
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: none
+              - task: DownloadPipelineArtifact@2
+                inputs:
+                  artifact: 'kubernetes'
+                  path: $(Pipeline.Workspace)
+              - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+                displayName: Replace tokens in Kubernetes Config File
+                inputs:
+                  rootDirectory: $(Pipeline.Workspace)
+                  targetFiles: 'aemo-test-api.yaml'
+                  verbosity: detailed
+                  keepToken: true
+                  tokenPrefix: __
+                  tokenSuffix: __
+              - task: Kubernetes@1
+                displayName: Apply the manifest file and deploy image to k8
+                inputs:
+                  connectionType: 'Kubernetes Service Connection'
+                  kubernetesServiceEndpoint: 'aks-prod-001'
+                  namespace: 'default'
+                  command: 'apply'
+                  useConfigurationFile: true
+                  configuration: $(Pipeline.Workspace)/aemo-test-api.yaml
+                  secretType: 'dockerRegistry'
+                  containerRegistryType: 'Azure Container Registry'

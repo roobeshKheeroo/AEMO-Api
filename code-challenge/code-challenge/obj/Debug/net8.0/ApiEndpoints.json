@@ -1,0 +1,33 @@
+[
+  {
+    "ContainingType": "code_challenge.Controllers.SearchUtilController",
+    "Method": "SearchSubText",
+    "RelativePath": "api/textutil/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mainText",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "subText",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32[]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
