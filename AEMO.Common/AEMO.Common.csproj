@@ -11,6 +11,7 @@
     <Folder Include="Caching\" />
     <Folder Include="Interfaces\" />
     <Folder Include="GlobalExceptionHandler\" />
+    <Folder Include="Helpers\" />
     <Folder Include="Validators\" />
   </ItemGroup>
 
