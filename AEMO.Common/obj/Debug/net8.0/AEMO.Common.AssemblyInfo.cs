@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AEMO.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9afb45822822e41ffb33f524decea48a3a344ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("AEMO.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AEMO.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,13 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Navin\\Github\\AEMO\\AEMO.api\\code-challenge\\",
+  "WorkspaceRootPath": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.WebApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CBECAB9F-CC5C-408A-B564-8AC8C7CD26FA}|code-challenge\\AEMO.WebApi.csproj|c:\\navin\\github\\aemo\\aemo.api\\code-challenge\\code-challenge\\controllers\\searchutilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CBECAB9F-CC5C-408A-B564-8AC8C7CD26FA}|code-challenge\\AEMO.WebApi.csproj|c:\\navin\\github\\aemo\\aemo.api\\aemo.webapi\\code-challenge\\controllers\\searchutilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBECAB9F-CC5C-408A-B564-8AC8C7CD26FA}|code-challenge\\AEMO.WebApi.csproj|solutionrelative:code-challenge\\controllers\\searchutilcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37E7561C-D829-4AC8-9D2E-41993B44EEEA}|..\\AEMO.UnitTesting\\AEMO.UnitTesting.csproj|c:\\navin\\github\\aemo\\aemo.api\\aemo.unittesting\\subtext_unittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBECAB9F-CC5C-408A-B564-8AC8C7CD26FA}|code-challenge\\AEMO.WebApi.csproj|c:\\navin\\github\\aemo\\aemo.api\\aemo.webapi\\code-challenge\\aemo.webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CBECAB9F-CC5C-408A-B564-8AC8C7CD26FA}|code-challenge\\AEMO.WebApi.csproj|solutionrelative:code-challenge\\aemo.webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBECAB9F-CC5C-408A-B564-8AC8C7CD26FA}|code-challenge\\AEMO.WebApi.csproj|c:\\navin\\github\\aemo\\aemo.api\\aemo.webapi\\code-challenge\\aemo.webapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{CBECAB9F-CC5C-408A-B564-8AC8C7CD26FA}|code-challenge\\AEMO.WebApi.csproj|solutionrelative:code-challenge\\aemo.webapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,28 +38,38 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SearchUtilController.cs",
-              "DocumentMoniker": "C:\\Navin\\Github\\AEMO\\AEMO.api\\code-challenge\\code-challenge\\Controllers\\SearchUtilController.cs",
-              "RelativeDocumentMoniker": "code-challenge\\Controllers\\SearchUtilController.cs",
-              "ToolTip": "C:\\Navin\\Github\\AEMO\\AEMO.api\\code-challenge\\code-challenge\\Controllers\\SearchUtilController.cs",
-              "RelativeToolTip": "code-challenge\\Controllers\\SearchUtilController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T14:20:18.446Z",
-              "EditorCaption": ""
+              "DocumentIndex": 1,
+              "Title": "AEMO.WebApi.csproj",
+              "DocumentMoniker": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.WebApi\\code-challenge\\AEMO.WebApi.csproj",
+              "RelativeDocumentMoniker": "code-challenge\\AEMO.WebApi.csproj",
+              "ToolTip": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.WebApi\\code-challenge\\AEMO.WebApi.csproj",
+              "RelativeToolTip": "code-challenge\\AEMO.WebApi.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-29T03:00:54.774Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SubText_UnitTest.cs",
-              "DocumentMoniker": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.UnitTesting\\SubText_UnitTest.cs",
-              "RelativeDocumentMoniker": "..\\AEMO.UnitTesting\\SubText_UnitTest.cs",
-              "ToolTip": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.UnitTesting\\SubText_UnitTest.cs",
-              "RelativeToolTip": "..\\AEMO.UnitTesting\\SubText_UnitTest.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAwwBAAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AEMO.WebApi",
+              "DocumentMoniker": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.WebApi\\code-challenge\\AEMO.WebApi.csproj",
+              "RelativeDocumentMoniker": "code-challenge\\AEMO.WebApi.csproj",
+              "ToolTip": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.WebApi\\code-challenge\\AEMO.WebApi.csproj",
+              "RelativeToolTip": "code-challenge\\AEMO.WebApi.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-29T03:01:46.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SearchUtilController.cs",
+              "DocumentMoniker": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.WebApi\\code-challenge\\Controllers\\SearchUtilController.cs",
+              "RelativeDocumentMoniker": "code-challenge\\Controllers\\SearchUtilController.cs",
+              "ToolTip": "C:\\Navin\\Github\\AEMO\\AEMO.api\\AEMO.WebApi\\code-challenge\\Controllers\\SearchUtilController.cs",
+              "RelativeToolTip": "code-challenge\\Controllers\\SearchUtilController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T14:03:55.763Z",
+              "WhenOpened": "2025-04-28T14:20:18.446Z",
               "EditorCaption": ""
             }
           ]
